@@ -2,6 +2,8 @@
 
 A random party generator for Final Fantasy Tactics based on [this](https://www.reddit.com/r/finalfantasytactics/comments/q7dl5a/thought_of_an_interesting_playthough_challenge/) reddit thread
 
+Credit to /u/Dezireless for the awesome idea!
+
 ### Installation
 
 Clone this repo!
