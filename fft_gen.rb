@@ -71,12 +71,12 @@ end
 def generate_party
   party = []
   PARTY_SIZE.times do |time|
-    party[time] = pick_three(party)
+    party[time] = pick_char_jobs(party)
   end
   party
 end
 
-def pick_three(party)
+def pick_char_jobs(party)
   job_list = make_job_list(party)
   char = []
   while char.size < JOBS_PER_CHAR
