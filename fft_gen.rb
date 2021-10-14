@@ -17,8 +17,6 @@ RULES =
   Each character gets access to abilities from 3 jobs, with no repeated jobs between characters.
   ---
 
-  Press Enter to generate party
-
   MSG
 
 JOBS = [
@@ -59,7 +57,14 @@ def welcome_message
   puts RULES
 end
 
+def display_current_party
+  prompt "Current saved party:"
+  puts File.read("current_party.txt")
+  print "\n"
+end
+
 def start_gen
+  prompt "Press enter to generate a new party"
   gets.chomp
 end
 
@@ -85,9 +90,31 @@ def make_job_list(party)
   job_list.reject { |job| party.flatten.include?(job) }.shuffle
 end
 
-def display_party(party)
+def make_readable_party(party)
+  readable_party = ''
   party.each_with_index do |char, idx|
-    prompt "Character #{idx + 1}: #{char.join('/')}"
+    readable_party << "Character #{idx + 1}: #{char.join('/')}"
+    readable_party << "\n" unless idx == PARTY_SIZE - 1
+  end
+  readable_party
+end
+
+def display_new_party(party)
+  puts make_readable_party(party)
+end
+
+def save_party!(party)
+  File.write("current_party.txt", make_readable_party(party))
+end
+
+def save_party?
+  loop do
+    print "\n"
+    prompt "Do you want to save this party composition? (y/n)"
+    answer = gets.chomp
+    return true if answer.downcase == 'y'
+    return false if answer.downcase == 'n'
+    prompt "Please enter 'y' or 'n'"
   end
 end
 
@@ -108,9 +135,11 @@ end
 
 loop do
   welcome_message
+  display_current_party if File.exist?("current_party.txt")
   start_gen
   party = generate_party
-  display_party(party)
+  display_new_party(party)
+  save_party!(party) if save_party?
   break unless gen_again?
 end
 
