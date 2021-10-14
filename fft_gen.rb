@@ -10,15 +10,6 @@
 #
 #  Some jobs may be forbidden
 #
-RULES =
-  <<-MSG
-  ---
-  The party will consist of 5 characters (Ramza, 3 generic and 1 monster). 
-  Each character gets access to abilities from 3 jobs, with no repeated jobs between characters.
-  ---
-
-  MSG
-
 JOBS = [
   'Squire',
   'Chemist',
@@ -45,6 +36,15 @@ JOBS = [
 FORBIDDEN_JOBS = ['Mime', 'Calculator']
 PARTY_SIZE = 4
 JOBS_PER_CHAR = 3
+
+RULES =
+  <<-MSG
+  ---
+  The party will consist of #{PARTY_SIZE + 1} characters (Ramza, 1 monster, and generics). 
+  Each character gets access to abilities from #{JOBS_PER_CHAR} jobs, with no repeated jobs.
+  ---
+
+  MSG
 
 def prompt(message)
   puts "=> #{message}"
