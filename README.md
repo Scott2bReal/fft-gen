@@ -12,7 +12,7 @@ Clone this repo!
 
 ### Usage
 
-Just run `ruby fft_gen.rb` and follow the prompts :)
+Just run `ruby fft_gen.rb` from inside the fft-gen directory and follow the prompts :)
 
 ### Customization
 
