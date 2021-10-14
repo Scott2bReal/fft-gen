@@ -10,8 +10,6 @@
 #
 #  Some jobs may be forbidden
 #
-require 'pry'
-
 RULES =
   <<-MSG
   ---
