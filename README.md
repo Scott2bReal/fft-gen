@@ -1,4 +1,4 @@
-## FFT Party Generator
+# FFT Party Generator
 
 A party generator for Final Fantasy Tactics based on [this](https://www.reddit.com/r/finalfantasytactics/comments/q7dl5a/thought_of_an_interesting_playthough_challenge/) reddit thread.
 
