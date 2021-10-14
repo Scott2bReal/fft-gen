@@ -33,7 +33,7 @@ JOBS = [
   'Mime'
 ]
 
-FORBIDDEN_JOBS = ['Mime', 'Calculator']
+FORBIDDEN_JOBS = []
 PARTY_SIZE = 4
 JOBS_PER_CHAR = 3
 
