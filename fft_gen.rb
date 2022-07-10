@@ -40,7 +40,7 @@ JOBS_PER_CHAR = 3
 RULES =
   <<-MSG
   ---
-  The party will consist of #{PARTY_SIZE + 1} characters (Ramza, 1 monster, and generics). 
+  The party will consist of #{PARTY_SIZE + 1} characters (Ramza, 1 monster, and generics).
   Each character gets access to abilities from #{JOBS_PER_CHAR} jobs, with no repeated jobs.
   ---
 
@@ -52,19 +52,19 @@ end
 
 def welcome_message
   system('clear')
-  puts "Welcome!"
+  puts 'Welcome!'
   print "\n"
   puts RULES
 end
 
 def display_current_party
-  prompt "Current saved party:"
-  puts File.read("current_party.txt")
+  prompt 'Current saved party:'
+  puts File.read('current_party.txt')
   print "\n"
 end
 
 def start_gen
-  prompt "Press enter to generate a new party"
+  prompt 'Press enter to generate a new party'
   gets.chomp
 end
 
@@ -104,16 +104,17 @@ def display_new_party(party)
 end
 
 def save_party!(party)
-  File.write("current_party.txt", make_readable_party(party))
+  File.write('current_party.txt', make_readable_party(party))
 end
 
 def save_party?
   loop do
     print "\n"
-    prompt "Do you want to save this party composition? (y/n)"
+    prompt 'Do you want to save this party composition? (y/n)'
     answer = gets.chomp
     return true if answer.downcase == 'y'
     return false if answer.downcase == 'n'
+
     prompt "Please enter 'y' or 'n'"
   end
 end
@@ -121,21 +122,22 @@ end
 def gen_again?
   loop do
     print "\n"
-    prompt "Generate another party? (y/n)"
+    prompt 'Generate another party? (y/n)'
     answer = gets.chomp
     return true if answer.downcase == 'y'
     return false if answer.downcase == 'n'
+
     prompt "Please press 'y' or 'n'"
   end
 end
 
 def goodbye
-  prompt "Have fun!"
+  prompt 'Have fun!'
 end
 
 loop do
   welcome_message
-  display_current_party if File.exist?("current_party.txt")
+  display_current_party if File.exist?('current_party.txt')
   start_gen
   party = generate_party
   display_new_party(party)
